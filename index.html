@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <script src="https://kit.fontawesome.com/d4b0967308.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="weatherApp.css" type="text/css"> -->
-    <script type="text/javascript" src="main.js"></script>
 </head>
+
 <body>
     <div id="main-container">
         <div id="container-1">
-            <div class="inside-container">
-                <div class="icon"><img src="" class="image"></div>
+            <div class="inside-container container-small">
+                <div class="icon"><img src="113.png" class="image"></div>
                 <div class="current-weather">
                     <div class="weather-description"></div>
                     <div class="temperature"></div>
                 </div>
             </div>
-            <div class="bottom-container">
+            <div class="bottom-container container-small">
                 <div class="left-bottom">
-                    <div class="city"></div>
-                    <div class="region"><span class="country"></span></div>
+                    <div class="city left-bottom-elements"></div>
+                    <div class="region left-bottom-elements"></div>
+                    <div class="country left-bottom-elements"></div>
                 </div>
                 <div class="right-bottom">
-                    <div class="time"></div>
-                    <div class="date"></div>
+                    <div class="time right-bottom-elements"></div>
+                    <div class="date right-bottom-elements"></div>
                 </div>
             </div>
         </div>
         <div id="container-2">
             <div class="search-bar-container">
-                <input type="text" placeholder="Enter the city" id="search-bar" autocomplete="off">
+                <input type="text" class="input" id="search-bar" name="search-bar" placeholder="Enter the city"
+                    autocomplete="off">
+                <input class="search-button" value="searchElement" type="submit">
             </div>
         </div>
         <div id="container-3">
-            <div class="right">
-                <div class="feels-like"></div>
-                <div class="wind-speed"></div>
-                <div class="humidity"></div>
-                <div class="clouds-above"></div>
+            <div class="right-container">
+
+                <div class="right-details">
+                    <div class="feels-like-icon right-icons"><i class="fa-solid fa-person"></i></div>
+                    <div class="inside-right right-icons">
+                        <div class="description">Feels_Like</div>
+                        <div class="feels-like"></div>
+                    </div>
+                </div>
+
+                <div class="right-details">
+                    <div class="wind-speed-icon right-icons"><i class="fa-solid fa-wind"></i></div>
+                    <div class="inside-right right-icons">
+                        <div class="description">WindSpeed</div>
+                        <div class="wind-speed"></div>
+                    </div>
+                </div>
+
+                <div class="right-details">
+                    <div class="humidity-icon right-icons"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="inside-right right-icons">
+                        <div class="description">Humidity</div>
+                        <div class="humidity"></div>
+                    </div>
+                </div>
+
+                <div class="right-details">
+                    <div class="clouds-above-icon right-icons"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="inside-right right-icons">
+                        <div class="description">Clouds</div>
+                        <div class="clouds-above"></div>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </div>
+    <script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>
