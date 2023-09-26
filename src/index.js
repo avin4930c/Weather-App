@@ -1,11 +1,9 @@
-
-
-let userLocation = prompt("Enter the Location");
+import './weatherApp.css';
 
 
 
 const reqDataCurrent = ["icon", "text", "temp_c", "temp_f", "feelslike_c", "feelslike_f", "wind_kph", "wind_mph", "humidity", "cloud"];
-const reqDataLocation = ["name", "region", "country", "localtime"]
+const reqDataLocation = ["name", "region", "country", "localtime"];
 
 function assignData(mainJson) {
     let weatherObj = {};
@@ -29,7 +27,7 @@ function assignData(mainJson) {
 }
 
 function pageLoad(objData) {
-    const icon = document.querySelector(".image");
+    // const icon = document.querySelector(".image");
     const weatherDescription = document.querySelector(".weather-description");
     const temperature = document.querySelector(".temperature");
     const city = document.querySelector(".city");
@@ -43,22 +41,23 @@ function pageLoad(objData) {
     const cloudsAbove = document.querySelector(".clouds-above");
 
     let timeDate = objData.localtime.split(" ");
-    icon.src = objData.icon;
+    // icon.src = objData.icon;
     weatherDescription.textContent = objData.text;
-    temperature.textContent = objData.temp_c;
-    city.textContent = objData.city;
-    region.textContent = objData.region;
+    temperature.textContent = objData.temp_c + " C";
+    console.log(objData.temp_c + "C");
+    city.textContent = objData.name;
+    region.textContent = objData.region;    
     country.textContent = objData.country;
     date.textContent = timeDate[0];
     time.textContent = timeDate[1];
-    feelsLike.textContent = objData.feelslike_c;
-    windSpeed.textContent = objData.wind_kph;
+    feelsLike.textContent =  objData.feelslike_c + "C";
+    windSpeed.textContent = objData.wind_kph + "Kph";
     humidity.textContent = objData.humidity;
-    cloudsAbove.textContent = objData.cloud;
+    cloudsAbove.textContent = objData.cloud + "%";
 }
 
-function getWeatherData() {
-    fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${userLocation}&aqi=yes&days=yes`)
+function getWeatherData(searchText) {
+    fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
     .then(response => response.json())
     .then(data => {
         if (data.error) {
@@ -73,5 +72,13 @@ function getWeatherData() {
     .catch(err => alert(err.message))
 }
 
-getWeatherData()
+getWeatherData("London");
 
+function displayWeather() {
+    let searchText = document.querySelector('#search-bar').value;
+    getWeatherData(searchText);
+}
+
+let searchButton = document.querySelector('.search-button');
+
+searchButton.addEventListener('click', displayWeather);
