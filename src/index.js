@@ -39,6 +39,7 @@ function pageLoad(objData) {
     const windSpeed = document.querySelector(".wind-speed");
     const humidity = document.querySelector(".humidity");
     const cloudsAbove = document.querySelector(".clouds-above");
+    const errorMessage = document.querySelector('.error-message');
 
     let timeDate = objData.localtime.split(" ");
     // icon.src = objData.icon;
@@ -50,10 +51,11 @@ function pageLoad(objData) {
     country.textContent = objData.country;
     date.textContent = timeDate[0];
     time.textContent = timeDate[1];
-    feelsLike.textContent =  objData.feelslike_c + "C";
-    windSpeed.textContent = objData.wind_kph + "Kph";
+    feelsLike.textContent =  objData.feelslike_c + " C";
+    windSpeed.textContent = objData.wind_kph + " Kph";
     humidity.textContent = objData.humidity;
     cloudsAbove.textContent = objData.cloud + "%";
+    errorMessage.textContent = "";
 }
 
 function getWeatherData(searchText) {
@@ -69,16 +71,35 @@ function getWeatherData(searchText) {
     })
     .then(data => assignData(data))
     .then(weatherObj => pageLoad(weatherObj))
-    .catch(err => alert(err.message))
+    .catch(err => {
+        const errorMessage = document.querySelector('.error-message');
+        if (err.message == "Parameter q is missing.") {
+            errorMessage.textContent = "Enter the city name";
+        }
+        else {
+            errorMessage.textContent = err.message;
+        }
+        
+    })
 }
 
 getWeatherData("London");
 
+let searchButton = document.querySelector('.search-button');
+let searchBar = document.querySelector('#search-bar');
+
 function displayWeather() {
     let searchText = document.querySelector('#search-bar').value;
+    searchText = document.querySelector('#search-bar').value;
     getWeatherData(searchText);
 }
 
-let searchButton = document.querySelector('.search-button');
+searchBar.addEventListener("keypress", function(e) {
+    if (e.keyCode == 13) {
+        console.log("Hello")
+        e.preventDefault();
+        searchButton.click();
+    }
+});
 
 searchButton.addEventListener('click', displayWeather);
