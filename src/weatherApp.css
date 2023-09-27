@@ -1,6 +1,7 @@
 body {
     margin: 0px;
-    color: rgb(255, 255, 255);
+    color: whitesmoke;
+    box-sizing: border-box;
 }
 
 * {
@@ -10,8 +11,9 @@ body {
 #main-container {
     width: 100%;
     height: 100vh;
-    background-image: url(https://images.hdqwalls.com/download/dark-night-beautiful-sky-nl-3840x2400.jpg);
+    background-image: url(https://images.hdqwalls.com/wallpapers/weather-and-sky-4k-nb.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -25,20 +27,31 @@ body {
     align-items: center;
     width: 25%;
     min-height: 60%;
+    background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 #container-2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 30%;
-    height: 40%;
+    min-height: 40%;
     
 }
 
 #container-3 {
-    width: 25%;
-    min-height: 40%;
+    width: 20%;
+    min-height: 60%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-small {
@@ -81,7 +94,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 60%;
     height: 70%;
     text-align: center;
     font-size: max(26px, 2vw);
@@ -131,7 +144,6 @@ body {
 
 .search-bar-container {
     width: 80%;
-    
     display: flex;
     align-items: center;
 }
@@ -145,20 +157,21 @@ body {
     min-height: 50px;
     padding: 0 1rem;
     color: #fff;
-    font-size: 15px;
+    font-size: 20px;
     border: 1px solid #5e4dcd;
     border-radius: 6px 0 0 6px;
     background-color: transparent;
 }
 
 .search-button {
+    width: 30%;
     min-height: 50px;
     padding: .5em 1em;
     border: none;
     border-radius: 0 6px 6px 0;
     background-color: #5e4dcd;
     color: #fff;
-    font-size: 15px;
+    font-size: 80%;
     cursor: pointer;
     transition: background-color .3s ease-in-out;
 }
@@ -167,29 +180,54 @@ body {
     background-color: #5e5dcd;
 }
 
+.search-bar-container ::placeholder {
+    color: white;
+}
+
+.error-message {
+    color: red;
+    width: 75%;
+    text-align: left;
+    font-size: 16px;
+    padding: 5px;
+}
+
 .input:focus,
 .input:focus-visible {
-    border-color: red;
+    border-color: #19179e;
     outline: none;
 }
 
 .right-container {
+    width: 100%;
+    text-align: center;
     font-size: 2vw;
 }
 
 .description {
-    width: 100%;
+    width: auto;
 }
 
 .right-details {
-    
+    text-align: left;
     width: 100%;
+    height: auto;
     padding: 1rem 0;
-    font-size: 32px;
+    margin: 10px 0px;
+    font-size: max(28px, 1.8vw);
+    word-wrap: break-word;
     display: flex;
+    justify-content: center;
+    
+    background: rgba( 255, 255, 255, 0.2 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .right-icons {
     width: 2rem;
-    margin-right: 10px;
+    margin-right: 15px;
 }
