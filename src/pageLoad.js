@@ -1,4 +1,4 @@
-function pageLoad(objData) {
+function pageLoad(objData, tempObj, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton) {
     tempObj = objData;
     // const icon = document.querySelector(".image");
     

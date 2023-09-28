@@ -16,6 +16,9 @@ const humidity = document.querySelector(".humidity");
 const cloudsAbove = document.querySelector(".clouds-above");
 const errorMessage = document.querySelector('.error-message');
 
+const searchButton = document.querySelector('.search-button');
+const searchBar = document.querySelector('#search-bar');
+
 const switchButton = document.querySelector('#switch');
 
 let tempObj;
@@ -32,7 +35,7 @@ function getWeatherData(searchText) {
         }
     })
     .then(data => assignData(data))
-    .then(weatherObj => pageLoad(weatherObj))
+    .then(weatherObj => pageLoad(weatherObj, tempObj, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton))
     .catch(err => {
         const errorMessage = document.querySelector('.error-message');
         if (err.message == "Parameter q is missing.") {
@@ -46,9 +49,6 @@ function getWeatherData(searchText) {
 }
 
 getWeatherData("London");
-
-let searchButton = document.querySelector('.search-button');
-let searchBar = document.querySelector('#search-bar');
 
 function displayWeather() {
     let searchText = document.querySelector('#search-bar').value;
