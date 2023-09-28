@@ -16,8 +16,6 @@ function assignData(mainJson) {
         weatherObj[key] = mainJson.location[key];
     }
 
-    console.log(weatherObj)
-
     return weatherObj;
     
 }

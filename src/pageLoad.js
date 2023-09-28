@@ -1,8 +1,5 @@
 function pageLoad(objData, tempObj, icon, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton) {
-    tempObj = objData;
-    // const icon = document.querySelector(".image");
     
-
     if (switchButton.checked) {
         temperature.textContent = objData.temp_f + " F";
         feelsLike.textContent =  objData.feelslike_f + " F";
@@ -28,6 +25,8 @@ function pageLoad(objData, tempObj, icon, weatherDescription, temperature, city,
     humidity.textContent = objData.humidity + "%";
     cloudsAbove.textContent = objData.cloud + "%";
     errorMessage.textContent = "";
+
+    console.log(objData);
 }
 
 export { pageLoad }

@@ -22,7 +22,7 @@ const searchBar = document.querySelector('#search-bar');
 
 const switchButton = document.querySelector('#switch');
 
-let tempObj;
+let tempObj = {};
 
 function getWeatherData(searchText) {
     fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
@@ -37,7 +37,10 @@ function getWeatherData(searchText) {
         }
     })
     .then(data => assignData(data))
-    .then(weatherObj => pageLoad(weatherObj, tempObj,icon, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton))
+    .then(weatherObj => {
+        pageLoad(weatherObj, tempObj, icon, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton)
+        tempObj = weatherObj;
+    })
     .catch(err => {
         const errorMessage = document.querySelector('.error-message');
         if (err.message == "Parameter q is missing.") {
@@ -60,7 +63,6 @@ function displayWeather() {
 
 searchBar.addEventListener("keypress", function(e) {
     if (e.keyCode == 13) {
-        console.log("Hello")
         e.preventDefault();
         searchButton.click();
     }
@@ -69,6 +71,7 @@ searchBar.addEventListener("keypress", function(e) {
 searchButton.addEventListener('click', displayWeather);
 
 switchButton.addEventListener('click', () => {
+    console.log(tempObj);
     if (switchButton.checked) {
         temperature.textContent = tempObj.temp_f + " F";
         feelsLike.textContent =  tempObj.feelslike_f + " F";
