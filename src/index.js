@@ -5,6 +5,10 @@ import './weatherApp.css';
 const reqDataCurrent = ["icon", "text", "temp_c", "temp_f", "feelslike_c", "feelslike_f", "wind_kph", "wind_mph", "humidity", "cloud"];
 const reqDataLocation = ["name", "region", "country", "localtime"];
 
+const switchButton = document.querySelector('#switch');
+
+let tempObj;
+
 function assignData(mainJson) {
     let weatherObj = {};
     for (let key of reqDataCurrent) {
@@ -26,9 +30,7 @@ function assignData(mainJson) {
     
 }
 
-function pageLoad(objData) {
-    // const icon = document.querySelector(".image");
-    const weatherDescription = document.querySelector(".weather-description");
+const weatherDescription = document.querySelector(".weather-description");
     const temperature = document.querySelector(".temperature");
     const city = document.querySelector(".city");
     const region = document.querySelector(".region");
@@ -41,19 +43,34 @@ function pageLoad(objData) {
     const cloudsAbove = document.querySelector(".clouds-above");
     const errorMessage = document.querySelector('.error-message');
 
+function pageLoad(objData) {
+    tempObj = objData;
+    // const icon = document.querySelector(".image");
+    
+
+    if (switchButton.checked) {
+        temperature.textContent = objData.temp_f + " F";
+        feelsLike.textContent =  objData.feelslike_f + " F";
+        windSpeed.textContent = objData.wind_mph + " Mph";
+    }
+
+    else {
+        temperature.textContent = objData.temp_c + " C";
+        feelsLike.textContent =  objData.feelslike_c + " C";
+        windSpeed.textContent = objData.wind_kph + " Kph";
+    }
+
     let timeDate = objData.localtime.split(" ");
     // icon.src = objData.icon;
     weatherDescription.textContent = objData.text;
-    temperature.textContent = objData.temp_c + " C";
+    
     console.log(objData.temp_c + "C");
     city.textContent = objData.name;
     region.textContent = objData.region;    
     country.textContent = objData.country;
     date.textContent = timeDate[0];
     time.textContent = timeDate[1];
-    feelsLike.textContent =  objData.feelslike_c + " C";
-    windSpeed.textContent = objData.wind_kph + " Kph";
-    humidity.textContent = objData.humidity;
+    humidity.textContent = objData.humidity + "%";
     cloudsAbove.textContent = objData.cloud + "%";
     errorMessage.textContent = "";
 }
@@ -103,3 +120,17 @@ searchBar.addEventListener("keypress", function(e) {
 });
 
 searchButton.addEventListener('click', displayWeather);
+
+switchButton.addEventListener('click', () => {
+    if (switchButton.checked) {
+        temperature.textContent = tempObj.temp_f + " F";
+        feelsLike.textContent =  tempObj.feelslike_f + " F";
+        windSpeed.textContent = tempObj.wind_mph + " Mph";
+    }
+
+    else {
+        temperature.textContent = tempObj.temp_c + " C";
+        feelsLike.textContent =  tempObj.feelslike_c + " C";
+        windSpeed.textContent = tempObj.wind_kph + " Kph";
+    }
+});
