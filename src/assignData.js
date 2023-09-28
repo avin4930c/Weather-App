@@ -1,4 +1,4 @@
-const reqDataCurrent = ["icon", "text", "temp_c", "temp_f", "feelslike_c", "feelslike_f", "wind_kph", "wind_mph", "humidity", "cloud"];
+const reqDataCurrent = ["icon", "text", "temp_c", "temp_f", "feelslike_c", "feelslike_f", "wind_kph", "wind_mph", "humidity", "cloud", "is_day"];
 const reqDataLocation = ["name", "region", "country", "localtime"];
 
 function assignData(mainJson) {

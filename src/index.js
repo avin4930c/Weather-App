@@ -5,6 +5,7 @@ import { pageLoad } from './pageLoad.js';
 
 const weatherDescription = document.querySelector(".weather-description");
 const temperature = document.querySelector(".temperature");
+const icon = document.querySelector(".image");
 const city = document.querySelector(".city");
 const region = document.querySelector(".region");
 const country = document.querySelector(".country");
@@ -27,6 +28,7 @@ function getWeatherData(searchText) {
     fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.error) {
             throw new Error(data.error.message)
         }
@@ -35,7 +37,7 @@ function getWeatherData(searchText) {
         }
     })
     .then(data => assignData(data))
-    .then(weatherObj => pageLoad(weatherObj, tempObj, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton))
+    .then(weatherObj => pageLoad(weatherObj, tempObj,icon, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton))
     .catch(err => {
         const errorMessage = document.querySelector('.error-message');
         if (err.message == "Parameter q is missing.") {

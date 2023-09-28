@@ -1,4 +1,4 @@
-function pageLoad(objData, tempObj, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton) {
+function pageLoad(objData, tempObj, icon, weatherDescription, temperature, city, region, country, time, date, feelsLike, windSpeed, humidity, cloudsAbove, errorMessage, switchButton) {
     tempObj = objData;
     // const icon = document.querySelector(".image");
     
@@ -16,7 +16,7 @@ function pageLoad(objData, tempObj, weatherDescription, temperature, city, regio
     }
 
     let timeDate = objData.localtime.split(" ");
-    // icon.src = objData.icon;
+    icon.src = "https:" + objData.icon;
     weatherDescription.textContent = objData.text;
     
     console.log(objData.temp_c + "C");
