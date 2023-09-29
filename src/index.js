@@ -28,7 +28,6 @@ function getWeatherData(searchText) {
     fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if (data.error) {
             throw new Error(data.error.message)
         }
@@ -71,7 +70,6 @@ searchBar.addEventListener("keypress", function(e) {
 searchButton.addEventListener('click', displayWeather);
 
 switchButton.addEventListener('click', () => {
-    console.log(tempObj);
     if (switchButton.checked) {
         temperature.textContent = tempObj.temp_f + " F";
         feelsLike.textContent =  tempObj.feelslike_f + " F";

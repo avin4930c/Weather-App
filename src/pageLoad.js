@@ -15,8 +15,6 @@ function pageLoad(objData, tempObj, icon, weatherDescription, temperature, city,
     let timeDate = objData.localtime.split(" ");
     icon.src = "https:" + objData.icon;
     weatherDescription.textContent = objData.text;
-    
-    console.log(objData.temp_c + "C");
     city.textContent = objData.name;
     region.textContent = objData.region;    
     country.textContent = objData.country;
@@ -25,8 +23,6 @@ function pageLoad(objData, tempObj, icon, weatherDescription, temperature, city,
     humidity.textContent = objData.humidity + "%";
     cloudsAbove.textContent = objData.cloud + "%";
     errorMessage.textContent = "";
-
-    console.log(objData);
 }
 
 export { pageLoad }
