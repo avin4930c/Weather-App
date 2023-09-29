@@ -25,7 +25,7 @@ const switchButton = document.querySelector('#switch');
 let tempObj = {};
 
 function getWeatherData(searchText) {
-    fetch(`http://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
+    fetch(`https://api.weatherapi.com/v1/current.json?key=936f8d1522364b2c8b8114545232409&q=${searchText}&aqi=yes&days=yes`)
     .then(response => response.json())
     .then(data => {
         if (data.error) {
